@@ -406,7 +406,7 @@ function Content() {
   const [nForm, setNForm] = useState({ title: '', content: '', category: 'Dental Camp', emoji: '🏕️' })
   const [gForm, setGForm] = useState({ label: '', category: 'Interior', emoji: '📸' })
 
-  const categoryEmojis = { 'Dental Camp': '🏕️', 'New Treatment': '✨', 'Offer': '🎁', 'Technology': '⚙️', 'Announcement': '📢', 'Offer': '🎉' }
+  const categoryEmojis = { 'Dental Camp': '🏕️', 'New Treatment': '✨', 'Offer': '🎉', 'Technology': '⚙️', 'Announcement': '📢' }
 
   const publishNews = () => {
     if (!nForm.title) { toast.error('Title required.'); return }
