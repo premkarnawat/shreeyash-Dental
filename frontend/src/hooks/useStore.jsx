@@ -1,5 +1,5 @@
-// src/hooks/useStore.js
-import { useState, useEffect, createContext, useContext } from 'react'
+// src/hooks/useStore.jsx
+import React, { useState, useEffect, createContext, useContext } from 'react'
 import {
   SERVICES, PRICING, NEWS, GALLERY, HOLIDAYS,
   SCHEDULE, SAMPLE_APPOINTMENTS, CLINIC_INFO, TIME_SLOTS
@@ -30,7 +30,8 @@ export function StoreProvider({ children }) {
   const [isAdmin, setIsAdmin] = useState(
     sessionStorage.getItem('sy_admin') === 'true'
   )
-  const [nextId, setNextId] = useState(100)
+  const nextIdRef = React.useRef(100)
+  const nextId = () => nextIdRef.current++
 
   // Persist to localStorage
   useEffect(() => { localStorage.setItem('sy_appointments', JSON.stringify(appointments)) }, [appointments])
@@ -42,8 +43,7 @@ export function StoreProvider({ children }) {
 
   // Appointment actions
   const addAppointment = (apt) => {
-    const newApt = { ...apt, id: nextId, status: 'confirmed', createdAt: new Date().toISOString() }
-    setNextId(n => n + 1)
+    const newApt = { ...apt, id: nextId(), status: 'confirmed', createdAt: new Date().toISOString() }
     setAppointments(prev => [...prev, newApt])
     return newApt
   }
@@ -75,24 +75,24 @@ export function StoreProvider({ children }) {
 
   // Services
   const addService = (svc) => {
-    setServices(prev => [...prev, { ...svc, id: nextId++ }])
+    setServices(prev => [...prev, { ...svc, id: nextId(), category: 'general', featured: false }])
   }
   const removeService = (id) => setServices(prev => prev.filter(s => s.id !== id))
 
   // News
   const addNews = (item) => {
-    setNews(prev => [{ ...item, id: nextId++, date: new Date().toISOString().split('T')[0] }, ...prev])
+    setNews(prev => [{ ...item, id: nextId(), date: new Date().toISOString().split('T')[0] }, ...prev])
   }
   const removeNews = (id) => setNews(prev => prev.filter(n => n.id !== id))
 
   // Gallery
-  const addGallery = (item) => setGallery(prev => [...prev, { ...item, id: nextId++ }])
+  const addGallery = (item) => setGallery(prev => [...prev, { ...item, id: nextId() }])
   const removeGallery = (id) => setGallery(prev => prev.filter(g => g.id !== id))
 
   // Holidays
   const addHoliday = (h) => {
     if (holidays.find(x => x.date === h.date)) return false
-    setHolidays(prev => [...prev, { ...h, id: nextId++ }])
+    setHolidays(prev => [...prev, { ...h, id: nextId() }])
     return true
   }
   const removeHoliday = (id) => setHolidays(prev => prev.filter(h => h.id !== id))
