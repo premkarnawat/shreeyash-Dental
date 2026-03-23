@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Lock, Eye, EyeOff, AlertCircle } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { StoreProvider, useStore } from '../hooks/useStore'
+import { StoreProvider, useStore } from '../hooks/useStore.jsx'
 
 function LoginForm() {
   const { adminLogin } = useStore()
