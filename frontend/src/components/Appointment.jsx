@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Calendar, Clock, User, Phone, Mail, FileText, Check, AlertTriangle, ChevronRight, Sparkles } from 'lucide-react'
+import { Calendar, Clock, UserRound, Phone, Mail, FileText, Check, AlertTriangle, ChevronRight, Sparkles } from 'lucide-react'
 import { useStore } from '../hooks/useStore.jsx'
 import toast from 'react-hot-toast'
 import { format } from 'date-fns'
@@ -174,7 +174,7 @@ export default function Appointment() {
                   <div>
                     <label className="text-[11px] font-bold text-white/40 uppercase tracking-widest mb-2 block">Full Name *</label>
                     <div className="relative">
-                      <User size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/25" />
+                      <UserRound size={15} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/25" />
                       <input className="input-premium pl-11" placeholder="Your full name"
                         value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))} />
                     </div>
