@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { MapPin, Phone, Clock, Mail, ArrowRight, Star, Send } from 'lucide-react'
+import { MapPin, Phone, Clock, Mail, ArrowRight, Star, Send, UserRound } from 'lucide-react'
 import { useStore } from '../hooks/useStore.jsx'
 import toast from 'react-hot-toast'
 import { useState } from 'react'
@@ -230,7 +230,7 @@ export function Contact() {
               <div>
                 <label className="text-[11px] font-bold text-white/35 uppercase tracking-widest mb-2 block">Your Name *</label>
                 <div className="relative">
-                  <User size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20"/>
+                  <UserRound size={14} className="absolute left-4 top-1/2 -translate-y-1/2 text-white/20"/>
                   <input className="input-premium pl-10" placeholder="Full name"
                     value={form.name} onChange={e=>setForm(f=>({...f,name:e.target.value}))} />
                 </div>
