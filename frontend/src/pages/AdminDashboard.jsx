@@ -6,7 +6,7 @@ import {
   PlusCircle, AlertTriangle, Download, RefreshCw, Bell, ChevronRight
 } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
-import { StoreProvider, useStore } from '../hooks/useStore'
+import { StoreProvider, useStore } from '../hooks/useStore.jsx'
 import toast from 'react-hot-toast'
 import { Toaster } from 'react-hot-toast'
 
